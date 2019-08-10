@@ -1,0 +1,281 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{a4wide}
+\begin{document}
+\newcommand{\solution}{\textbf{{\normalsize Solution.}\quad}}
+\newcommand{\exercise}{\textbf{{\normalsize Exercise.}\quad}}
+\newcommand{\bigM}{\mathfrak{M}}
+\title{Abstract Integration, Chapter 1}
+\maketitle
+\begin{enumerate}
+	%EX1
+	\item \exercise Does there exists an infinite $\sigma$-algebra which has only countably many members?\\
+		\solution No. Let $X$ be a measurable set with an infinite $\sigma$-algebra $\bigM$. 
+		Since $\bigM$ is infinite, there exists a nonempty set $E\in\bigM$ which is properly contained in $X$. By letting the measurable subsets of $E$ and $E^c$ be the intersections of $X$ with $E$ and $E^c$, $E$ and $E^c$ are therefore measurable spaces. Since $\bigM$ is infinite, at least one of $E$ and $E^c$ must be infinite.\\
+		A rooted binary tree will be inductively built in the following way. First, define the root as $X$. Second, given a vertex which is a measurable subset $E$ of $X$ (which can be $X$ of course), if it contains a proper measurable subset $E'$, define the two successors to be $E'$ and $E-E'$. Since at least one of $E'$ and $E-E'$ is infinite, the tree is infinite.\\
+		Pick one path consisting of subsets $E_{n}\supset{E_{n+1}}$, then the sets $F_i=E_i-E_{i+1}$ form an infinite collection of disjoint nonempty{\scriptsize } measurable subsets of $X$. By the definition of $\sigma$-algebra, $\bigM$ needs to contain every union of such sets, which forms a bijection with the set of subsets of $\mathbb{N}$ (that is,  $\{\{0\},\{0,1\},\{0,1,2\},\cdots\}$), which is uncountable. Hence $\bigM$ is not countable.
+	%EX2
+	\item \exercise Prove an analogue of Theorem 1.8 for $n$ functions.\\
+		\solution The theorem to be proved is:\\
+		\\
+		\textit{Let $u_1,\cdots,u_n$ be real measurable functions on a measurable space $X$, let $\Phi$ be a continuous mapping of $\mathbb{R}^n$ into a topological space $Y$, and define \[h(x)=\Phi(u_1(x),\cdots,u_n(x))\] for $x\in{X}$. then $h$ is measurable.}\\
+		\\
+		Put $f_n(x)=(u_1(x),\cdots,u_n(x))$, then $f$ maps $X$ into $\mathbb{R}^n$. Since $h(x)=\Phi(f(x))$ and the composition of a continuous function ($\Phi$) and a measurable function ($f$) is measurable, it's enough to prove that $f$ is measurable.\\
+		if $R$ is any open n-cell in the space, with sides parallel to the axes, then $R$ is the cartesian product of two segments $I_1,I_2,\cdots,I_n$ and
+		\[
+			f^{-1}(R)=u^{-1}_1(I_1)\cap u^{-1}_2(I_2)\cap\cdots\cap u^{-1}_n(I_n)
+		\]
+		which is measurable, by the assumption of $u_i$. Every open set $V$ in the space is a countable union of such rectangle $R_i$, and since
+		\[
+			f^{-1}(V)=f^{-1}(\bigcup\limits_{n=1}^{\infty}{R_i})=\bigcup \limits_{n=1}^{\infty}f^{-1}(R_i),
+		\]
+		$f^{-1}(V)$ is measurable, which shows the measurability of $f$.
+	%EX3
+	\item \exercise Prove that if $f$ is a real function on a measurable space $X$ such that $\{x|f(x)\geq{r}\}$ is measurable for every rational $r$, then $f$ is measurable.\\
+	\solution This exercise is a weakened version of 1.12(c). Hence it suffices to prove $f^{-1}((\alpha,\infty])\in\bigM$ for every real $\alpha$.\\
+	Let $\Omega$ be the collection of all $E\subset[-\infty,\infty]$ such that $f^{-1}(E)\in\bigM$. Then $\Omega$ is a $\sigma$-algebra. Pick $\alpha\in\mathbb{R}$, and choose a sequence of rational numbers $\{\alpha_n\}$ such that $\alpha_n>\alpha$ and $\lim\limits_{n\to\infty}\alpha_n=\alpha$. This is possible since $\mathbb{Q}$ is dense in $\mathbb{R}$. Observe that 
+	\[
+		(\alpha,\infty]=\bigcup\limits_{n=1}^{\infty}[\alpha_n,\infty]
+	\]
+	and $[\alpha_n,\infty]\in\Omega$, $(\alpha,\infty]$ is therefore a member of $\Omega$. That is, $f^{-1}((\alpha,\infty])\in\bigM$.
+	%EX4
+	\item \exercise Let $\{a_n\}$ and $\{b_n\}$ be sequences in $[-\infty,\infty]$, and prove the following assertions:
+	\begin{enumerate}
+		\item $\limsup\limits_{n\to\infty}(-a_n)=-\liminf\limits_{n\to\infty}a_n$
+		\item $\limsup\limits_{n\to\infty}(a_n+b_n)\leq\limsup\limits_{n\to\infty}a_n+\limsup\limits_{n\to\infty}b_n$\\
+		provided that none of the sum is of the form $\infty-\infty$ . Show by an example that strict inequality can hold here.
+		\item $\liminf\limits_{n\to\infty}a_n\leq\liminf\limits_{n\to\infty}b_n$ if $a_n{\leq}b_n$ holds for all $n$.
+	\end{enumerate}
+	\solution \begin{enumerate}
+		\item Put $A_k=\sup\{-a_k,-a_{k+1},\cdots\}$. In this case, $-a_j\leq{A_k}$ for all $j\geq{k}$. If $A<A_k$ then there exist some $j\geq{k}$ such that $-a_j>A$. This is the definition of supremum.\\
+		Now consider $a_j$. $a_j\geq{-A_k}$ for all $j\geq{k}$. If $-A>-A_k$ then there exist some $j\geq{k}$ such that $a_j<-A$. Hence, $A'_k=\inf\{a_k,a_{k+1},\cdots\}=-A_k$.\\
+		Following the same way, we obtain $$\inf\{A_k\}=-\sup\{-A_k\}=-\sup{A'_k},$$ which is equivalent to the assertion (a) according to the definition of upper/lower limit.
+		\item Put $A_k=\sup\{a_k,a_{k+1},\cdots\}$, $B_k=\sup\{b_k,b_{k+1},\cdots\}$. Then $a_j+b_j{\leq}A_k+B_k$ for all $j{\geq}k$. Hence $C_k=\sup\{a_k+b_k,a_{k+1}+b_{k+1},\cdots\}\leq{A_k+B_k}$. Observe that all $\{A_k\}$, $\{B_k\}$ and $\{C_k\}$ are monotonically decreasing, the desired inequality can be obtained by dealing with the limit k:
+		\[
+			\lim\limits_{k\to\infty}C_k=\inf{C_k}\leq\lim\limits_{k\to\infty}(A_k+B_k)=\lim\limits_{k\to\infty}A_k+\lim\limits_{k\to\infty}B_k=\inf{A_k}+\inf{B_k}
+		\]
+		Again, this is equivalent to (b).\\
+		For strict inequality, consider $a_n=(-1)^n$, $b_n=(-1)^{n-1}$. In this case, the left side is equal to $0$ while the right side is equal to $2$.
+		\item For $A_k=\inf\{a_k,a_{k+1},\cdots\}$ and $B_k=\inf\{b_k,b_{k+1},\cdots\}$. Since $a_k{\leq}b_k$, $A_k{\leq}B_k$ holds for all $k>0$. Hence $\sup{A_k}\leq\sup{B_k}$, which proves (c).
+	\end{enumerate}
+	%EX5
+	 \item \exercise\begin{enumerate}
+	 	\item Suppose $f: X\to[-\infty,\infty]$ and $g:X\to[-\infty,\infty]$ are measurable. Prove that the sets
+	 	\[
+	 		\{x|f(x)<g(x)\},\quad\{x|f(x)=g(x)\}
+	 	\]
+	 	are measurable.
+	 	\item Prove the set pf points at which a sequence of measurable real-valued functions converges (to a finite limit) is measurable.
+	 \end{enumerate}
+ 	\solution \begin{enumerate}
+ 		\item The key to this question is to rewrite the two sets. Of course, infinity should be considered.\\
+ 		Define $F_+=\{x|f(x)=\infty\}$, $F_-=\{x|f(x)=-\infty\}$. Respectively, define $G_+$ and $G_-$ for $g(x)$. These four sets are all measurable. For example, $F_+$ can be rewritten as $\bigcap\limits_{n=1}^{\infty}\{x|f(x)\geq{n}\}$.\\
+ 		Define $X'=\{x|-\infty<f(x)<\infty,-\infty<g(x)<\infty\}$ and $h(x)=f(x)-g(x)$ on $X'$, which is measurable. Then the first set can be written as
+ 		\[
+ 		h^{-1}([-\infty,0))\cup(Y_+-Z_+)\cup(Z_--Y_-)
+ 		\]
+ 		which means, if $f$ and $g$ are finite, then take the set where $h(x)<0$; if not, take the set where $f$ is infinite but $g$ is not, or the set where $g$ is negatively infinite but $f$ is not.\\
+ 		According to the definition of $\sigma$-algebra, all these 3 sets are measurable, so is the first set of (a).\\
+ 		The second set can be written as
+ 		\[
+ 			(X'-h^{-1}([-\infty,0)\cup(0,\infty]))\cup(Y_+\cap{Z_+})\cup(Y_-\cup{Z_-})
+ 		\]
+ 		which is also measurable. This notation means, the set where $h=0$ or $f=g=\infty$ or $f=g=-\infty$.
+ 		\item Let $f_n$ and $E$ be the sequence of real functions and set mentioned in (b). If $E$ can be shown as a countable union/intersection of measurable sets, then it's measurable.\\
+ 		Since $f_n$ converges, Cauthy criteria can be used here. For every $n\geq 1$, there is an integer $m \geq 1$ such that $|f_i(x)-f_j(x)|<\frac{1}{n}$ holds for all $x\in{E}$ where $i,j\geq m$. Hence $E$ can be rewritten in the following form
+ 		\[
+ 			E=\bigcap_{n=1}^{\infty}\bigcup_{m=1}^{\infty}\bigcap_{i,j\geq m}\{x||f_i(x)-f_j(x)|<\frac{1}{n}\}=\bigcap_{n=1}^{\infty}\bigcup_{m=1}^{\infty}\bigcap_{i,j\geq m}(f_i-f_j)^{-1}(-\frac{1}{n},\frac{1}{n})
+ 		\]
+ 		Since $(f_i-f_j)$ is measurable, the set $(f_i-f_j)^{-1}(-\frac{1}{n},\frac{1}{n})$ is measurable. Hence $E$ has been shown as a countable union and intersection of measurable sets, and is measurable.
+ 		\end{enumerate}
+ 	%EX6
+ 	\item \exercise Let $X$ be an uncountable set, let $\bigM$ be the collection of all sets $E\subset X$ such that either $E$ or $E^c$ is at most countable (finite or countable), and define $\mu(E)=0$ in the first case and $\mu(E)=1$ in the second. Prove that $\bigM$ is a $\sigma$-algebra in $X$ and that $\mu$ is a measure on $\bigM$. Describe the corresponding measure functions and their integrals.\\
+ 	\solution The question includes 3 parts.
+ 	\begin{enumerate}
+ 		\item $\bigM$ a $\sigma$-algebra in $X$.
+ 		\begin{enumerate}
+ 			\item Since $X\in\bigM$ is uncountable, $X^c=\emptyset$ is at most countable, $\emptyset\in\bigM$.
+ 			\item If $A\in\bigM$, then either $A=(A^c)^c$ or $A^c$ is at most countable; showing $A^c\in\bigM$.
+ 			\item Suppose $A_i\in\bigM$ for $i\in\mathbb{N}$ and $A=\bigcup A_i$ in this section. The fact that $A\in\bigM$ shall be proved here.
+ 			\begin{enumerate}
+ 				 \item If $A_i$ is at most countable for all $i$, then $A$ is at most countable while the complement $A^c=\bigcap A_i^c$ is uncountable. Hence $A\in\bigM$. 
+ 				 \item If $A$ is uncountable, there is at least one uncountable set. Let $A_1$ be such set. Notice the fact that $A_1^c$ is at most countable and $(\bigcup A_i)^c=\bigcap A_i^c\subset A_1^c$, the set $(\bigcup A_i)^c$ is therefore at most countable. Hence $\bigcup A_i\in\bigM$.
+ 			\end{enumerate}
+ 		\end{enumerate}
+ 		\item $\mu$ is a measure on $\bigM$.
+ 		\begin{enumerate}
+ 			\item Since $\mu$ takes values $0$ and $1$, $\mu(A)\in[0,\infty]$ for all $A\in\bigM$.
+ 			\item Suppose $A_i$  for $i\in\mathbb{N}$ are disjoint measurable sets. $A=\bigcup A_i$ The fact that $\mu$ is countable addictive shall be proved here.
+ 				\begin{enumerate}
+ 					\item If $\mu(A)=0$ then all of $A_i$ is countable, so
+ 					\[
+ 						\sum\mu(A_i)=\mu(A)=0
+ 					\]
+ 					\item If $\mu(A)=1$, then at least one of $A_i$ is uncountable. Let $A_1$ be such set. Notice the fact that since all $A_i$ are disjoint, $A_1^c$ is countable and $A_i\subset A_1^c$ for $j>1$, $\mu(A_i)=0$ for $j>1$. Hence
+ 					\[
+ 						\mu(A)=\mu(A_1)=\sum\mu(A_i)=1
+ 					\]
+ 				\end{enumerate}
+ 		\end{enumerate}
+ 		\item Characterization of measurable functions and their integrals.\\
+ 		Let $f:X\to\mathbb{R}$ be the corresponding functions. For every $r\in\mathbb{R}$, either $f^{-1}({r})$ or $f^{-1}(\mathbb{R}-{r})$ is countable. This describes the corresponding real functions. Let $A\in\mathbb{R}$ denote the set of points such that $f^{-1}(r)$ is not at most countable, then $\int_{X}fd\mu=\sum_{r\in{A}}r$.
+ 		
+ 	\end{enumerate}
+ 	%EX7
+ 	\item \exercise Suppose $f_n:X\to[0,\infty]$ is measurable for $n=1,2,3,\cdots,$, $f_1\geq f_2\geq f_3\geq\cdots\geq0$, $f_n(x)\to f(x)$ as $n\to\infty$ for every $x\in X$, and $f_1\in L^1(\mu)$. Prove that then
+ 	\[
+ 		\lim\limits_{n\to\infty}\int_{X}f_nd\mu=\int_Xfd\mu
+ 	\]
+ 	and show that this conclusion does not follow if the condition $f_1\in L^1(\mu)$ is omitted.\\
+ 	\solution Take $g=f_1$ in the theorem 1.34, Lebesgue's Dominated Convergence Theorem, the equation is concluded.\\
+ 	For showing $f_1\in L^1(\mu)$ is a necessary condition for the conclusion, it suffices to show a counterexample. Take $X=\mathbb{R}$ and $f_n(x)=\chi_{[n,\infty)}$. In this case,
+ 	\[
+ 		\int_X fd\mu=0
+ 	\]
+ 	while
+ 	\[
+ 		\lim\limits_{n\to\infty}\int_X f_nd\mu=\infty.
+ 	\]
+ 	%EX8
+ 	\item \exercise Put $f_n = \chi_E$ if $n$ is odd, $f_n=1-\chi_E$ if $n$ is even. What is the relevance of this example to Fatou's Lemma?\\
+ 	\solution Fatou's Lemma says:\\
+ 	
+ 	\textit{If $f_n:X\to[0,\infty]$ is measurable for each positive integer $n$,then \[\int_X\left(\liminf_{n\to\infty}f_n\right)d\mu\leq\liminf_{n\to\infty}\int_X f_nd\mu\]}
+ 	
+ 	To find the relationship, we should calculate the left hand and the right hand for this $f_n$. This is possible since $f_n\geq0$.\\
+ 	Since $\lim\inf_{n\to\infty}f_n=0$, the left hand should therefore be $0$. Notice that
+ 	\[
+ 		\int_Xf_nd\mu=\begin{cases}
+ 		\mu(E),\text{ $n$ is odd}\\
+ 		\mu(X)-\mu(E),\text{ $n$2 d is even}
+ 		\end{cases}
+ 	\]
+ 	So for the right hand, we obtain
+ 	\[
+ 	\liminf_{n\to\infty}\int_Xf_nd\mu=\min(\mu(E),\mu(X)-\mu(E))
+ 	\]
+ 	If $\mu(E)$ and $\mu(X-E)$ is not equal to $0$, then this $f$ is an example that the strict inequality holds.
+ 	%EX9
+ 	\item \exercise Suppose $\mu$ is a positive measure on $X$, $f:X\to[0,\infty]$ is measurable, $\int_Xfd\mu=c$, where $0<c<\infty$, and $\alpha$ is a constant. Prove that
+ 	\[
+ 		\lim\limits_{n\to\infty}\int_{X}n\log[1+(f/n)^{\alpha}]d\mu=\begin{cases}
+ 		\infty&\quad\text{if }0<\alpha<1\\
+ 		c&\quad\text{if }\alpha=1\\
+ 		0&\quad\text{if }1<\alpha<\infty
+ 		\end{cases}
+ 	\]
+ 	Hint: If $\alpha\geq1$, prove that the integrands are dominated by $\alpha f$. If $\alpha<1$, Fatou's lemma can be applied.\\
+ 	\solution
+ 	\begin{enumerate}
+ 		\item $\alpha\geq{1}$:\\
+ 			We shall prove that
+ 			\[
+ 				\log\left(1+\left(\frac{f(x)}{n}\right)^{\alpha}\right)\leq\alpha\frac{f(x)}{n}
+ 			\]
+ 			holds for all $n$.
+ 			It suffices to show that
+ 			\[
+ 				\log(1+x^{\alpha})\leq\alpha{x}
+ 			\]
+ 			for all $x>0$ and $\alpha\geq{1}$.\\
+ 			Define $g(x)=\log(1+x^{\alpha})-\alpha{x}$, then $g(0)=0$. Computing derivative of $g$, we have
+ 			\[
+ 				g'(x)=\frac{\alpha{x^{\alpha-1}}}{1+x^{\alpha}}-\alpha=\alpha(\frac{x^{\alpha-1}}{1+x^{\alpha}}-1)
+ 			\]
+ 			When $x\geq{1}$, we have 
+ 			\begin{equation}
+ 				\frac{x^{\alpha-1}}{1+x^{\alpha}}\leq\frac{x^{\alpha-1}}{x^{\alpha}}=\frac{1}{x}\leq{1}
+ 			\end{equation}
+ 			When $0\leq{x}\leq{1}$, we have
+ 			\begin{equation}
+	 			(x^{\alpha-1}-1)-x^{\alpha}\leq{0}
+ 			\end{equation}
+ 			which implies that $\frac{x^{\alpha-1}}{1+x^{\alpha}}\leq1$.\\
+ 			So $g'(x)\leq{0}$ when $x\geq0$. Consequently, $g(x)\leq{0}$ holds for all $x$. The inequality at the beginning is proved.\\
+ 			Define $h_n(x)=n\log[1+(f/n)^{\alpha}]$, then $h_n(x)\leq \alpha{f(x)}$ holds for all n. Also notice that $\int_{X}\alpha{f}d\mu=c\alpha<\infty$, hence Lebesgue's Dominated Convergence Theorem can be applied here. We therefore should discuss the limit of $h_n(x)$.\\
+ 			$h_n(x)$ can be rewritten as
+ 			\[
+ 				h_n(x)=\log[1+(f/n)^{\alpha}]^n\to\frac{f^{\alpha}}{n^{\alpha-1}}
+ 			\]
+ 			When $\alpha=1$, the limit is $f(x)$, hence the integral is $c$. When $\alpha>1$, the limit is $0$, so is the integral. (The set where $f(x)=\infty$ should be ignored since $f(x)<\infty$ a.e. on $X$.)\\
+ 		\item $0<\alpha<1$:\\
+ 			In this case, $h_n(x)\to\infty$ a.e. on $X$ since $n^{\alpha-1}\to{0}$. Since $h_n:X\to[0,\infty]$ is measurable for each $n$, Fatou's Lemma can be applied here, hence we obtain
+ 			\[
+ 				\int_{X}\left(\liminf_{n\to\infty}h_n\right)d\mu=\infty\leq\liminf_{n\to\infty}\int_{X}h_nd\mu\leq\lim_{n\to\infty}\int_{X}h_nd\mu
+ 			\]
+ 	\end{enumerate}
+ 	%EX10
+ 	\item \exercise Suppose $\mu(X)<\infty$, $\{f_n\}$ is a sequence of bounded complex measurable functions on $X$, and $f_n\to f$ uniformly on $X$. Prove that
+ 	\[
+ 		\lim_{n\to\infty}\int_{X}f_nd\mu=\int_{X}fd\mu,
+ 	\]
+ 	and show that the hypothesis "$\mu(x)<\infty$" cannot be omitted.\\
+ 	\solution
+ 	Since $f_n\to f$ uniformly on $X$, for every $\varepsilon>0$, there exists a positive integer $n_0$ such that
+ 	\[
+ 		|f_n(x)-f(x)|<\varepsilon\quad\forall{n\geq n_0}
+ 	\]
+ 	Since $|f_n(x)-f(x)|\geq|f_{n}(x)|-|f(x)|$ and $|f_{n_0}(x)-f(x)|\geq|f(x)|-|f_{n_0}(x)|$, we obtain
+ 	\[
+ 		\begin{cases}
+ 		|f_{n}(x)|<|f(x)|+\varepsilon\\
+ 		|f(x)|<|f_{n_0}(x)|+\varepsilon
+ 		\end{cases}
+ 	\]
+ 	Hence
+ 	\[
+ 		|f_n(x)|<|f_{n_0}(x)|+2\varepsilon
+ 	\]
+ 	Define $g(x)=\max\{|f_1(x)|,\cdots,|f_{n_0-1}(x)|,|f_{n_0}(x)|+2\varepsilon\}$, then $|f_n(x)|\leq|g(x)|$ holds for all $n$. Also $g(x)$ is bounded since all $f_n(x)$ are. Since $\mu(X)<\infty$, $g\in{L^1(\mu)}$. Now the equation is an example of Lebesgue's Dominated Convergence Theorem.\\
+ 	To show that $\mu(X)<\infty$ is a necessary condition, it suffices to show a counterexample with $\mu(X)=\infty$. Suppose $f_n(x)=\frac{1}{n}$, then $f(x)=0$. In this case, $\lim_{n\to\infty}\int_{X}f_nd\mu=\infty$, while $\int_{X}fd\mu=0$.
+ 	%EX11
+ 	\item \exercise Show that 
+ 	\[
+ 		A=\bigcap_{n=1}^{\infty}\bigcup_{k=n}^{\infty}E_k
+ 	\]
+ 	in theorem 1.41, and hence prove the theorem without any reference to integration.\\
+ 	\solution Let $\{E_k\}$ be a sequence of measurable sets in $X$, such that
+ 	\[
+ 		\sum_{k=1}^{\infty}\mu(E_k)<\infty,
+ 	\]
+ 	then $A$ is the set of all $x$ which lie in infinitely many $E_k$.\\
+ 	Let $B=\bigcap_{n=1}^{\infty}\bigcup_{k=n}^{\infty}E_k$. If $x\in{A}$, then $x\in\bigcup_{k=n}^{\infty}E_k$ holds for all $k>0$. That is, $x\in{B}$. Conversely, if $x\notin{A}$, then this $x$ is contained by finitely many sets $\{E_{i_1},E_{i_2},\cdots,E_{i_r}\}$($i_1<i_2<\cdots<i_r$) such that $x\notin\bigcup_{k>i_r}E_{k}$. In this case, $x\in\bigcup_{k=n}^{\infty}E_k$ does not hold for $k=i_r+1$, which implies that $x\notin{B}$. Hence $A=B$.\\
+ 	The second part is an application of Theorem 1.19.  Since $\sum\mu(E_k)<\infty$, $\mu(E_k)\to 0$(Cauthy criteria). Since $\{E_k\}$ are not necessarily pairwise disjoint, $\mu(\bigcup_{k=n}^{\infty}E_k)\leq\sum_{k=n}^{\infty}E_k$. Let $A_n=\bigcup_{k=n}^{\infty}E_k$, then $\mu(A_n)\to{0}$. Since $A=\bigcap_{n=1}^{\infty}A_n$, according to theorem 1.19(e), $\mu(A_n)\to\mu(A)$. Hence, $\mu(A)=0$.
+ 	%EX12
+ 	\item \exercise Suppose $f\in L_1(\mu)$. Prove that to each $\varepsilon>0$ there exists a $\delta>0$ such that $\int_E|f|d\mu<\varepsilon$ whenever $\mu(E)<\delta$.\\
+ 	\solution Let $(X,\bigM,\mu)$ be the measure space. Suppose the statement is false, therefore there exists a $\varepsilon>0$ such that for each $\delta>0$, there exists a $E_\delta<\bigM$ such that $\mu(E_\delta)<\delta$ while $\int_{E_\delta}|f|d\mu>\varepsilon$. Let $\delta_n=\frac{1}{2^n}$, there exists a sequence of measurable sets $\{E_{\delta_n}\}$ satisfying the inequalities mentioned above.\\
+ 	Define $A_k=\bigcup_{n=k}^{\infty}E_{\delta_n}$ and $A=\bigcap_{k=1}^{\infty}A_k$, then $A_1\supset A_2\supset A_3\supset\cdots$, and $\mu(A_1)=\mu(\bigcap_{n=1}^{\infty}E_{\delta_n})\leq\sum\mu(E_{\delta_n})<\sum\frac{1}{2^n}=1<\infty$, therefore according to theorem 1.19(e), $\mu(A_k)\to\mu(A)$.\\
+ 	Define $\varphi:\bigM\to[0,\infty]$ such that $\varphi(E)=\int_{E}|f|d\mu$. By theorem 1.29, $\varphi$ is a measure. Since $f(x)\in{L^1(\mu)}$, $\varphi(A_k)<\infty$ for every $k$. By theorem 1.19(e), we get $\varphi(A_k)\to\varphi(A)$. According to exercise 11, $\mu(A)=0$. Therefore $\varphi(A)=0$. On the other hand,
+ 	\[
+ 		\varphi(A_k)=\varphi(\bigcup_{n=k}^{\infty}E_{\delta_n})\geq\varphi(E_{\delta_k})>\varepsilon.
+ 	\]
+ 	Therefore a contradiction is obtained. Hence the result.
+ 	%EX13
+ 	\item \exercise Show that proposition 1.24(c) is also true when $c=\infty$.\\
+ 	\solution We have to show
+ 	\[
+ 		\int_Xcfd\mu=c\int_{X}fd\mu,\text{ when }c=\infty\text{ and }f\geq0
+ 	\]
+ 	holds for both $\int_{X}fd\mu=0$ and $\int_{X}fd\mu>0$.
+ 	\begin{enumerate}
+ 		\item $\int_{X}fd\mu=0$.\\
+ 		
+ 		In this case, $f=0$ a.e. on $X$ and $cf=0$ a.e. on $X$. Therefore
+ 		\[
+ 			\int_{X}cfd\mu=0=c\int_{X}fd\mu
+ 		\]
+ 		\item $\int_{X}fd\mu>0$.\\
+ 		
+ 		In this case, there exist some $\varepsilon>0$ and a measurable set $E$ where $\mu(E)>0$ and $f(x)\geq\varepsilon$ whenever $x\in{E}$. (If not, $f(x)<\varepsilon$ a.e. for all $\varepsilon>0$; making $\varepsilon\to0$, we get $f(x)=0$ a.e. on $X$. It's of the first case.) Then
+ 		\[
+ 			\int_{X}cfd\mu\geq\int_{E}cfd\mu\geq\varepsilon\int_{E}cd\mu=\infty.
+ 		\]
+ 		That is,
+ 		\[
+ 			c\int_{X}fd\mu=\int_{X}cfd\mu=\infty.
+ 		\]
+ 	\end{enumerate}
+\end{enumerate}
+No rights reserved. Any part of this work can be reproduced or transmitted in any form or by any means. If you find any error or have better methods, you are welcome to mail to Admiraldesvl@gmail.com or create an issue/pull request at https://github.com/Admiraldesvl/Real-and-Complex-Analysis-Rudin-Solution
+\end{document}
