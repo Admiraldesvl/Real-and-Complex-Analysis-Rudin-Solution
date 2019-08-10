@@ -119,9 +119,26 @@
  				\end{enumerate}
  		\end{enumerate}
  		\item Characterization of measurable functions and their integrals.\\
- 		Let $f:X\to\mathbb{R}$ be the corresponding functions. For every $r\in\mathbb{R}$, either $f^{-1}({r})$ or $f^{-1}(\mathbb{R}-{r})$ is countable. This describes the corresponding real functions. Let $A\in\mathbb{R}$ denote the set of points such that $f^{-1}(r)$ is not at most countable, then $\int_{X}fd\mu=\sum_{r\in{A}}r$.
+ 		%Let $f:X\to\mathbb{R}$ be the corresponding functions. For every $r\in\mathbb{R}$, either $f^{-1}({r})$ or $f^{-1}(\mathbb{R}-{r})$ is countable. This describes the corresponding real functions. Let $A\in\mathbb{R}$ denote the set of points such that $f^{-1}(r)$ is not at most countable, then $\int_{X}fd\mu=\sum_{r\in{A}}r$.
+ 		Define to collection of measurable functions as such:
+ 		\[
+ 			F_{+}=\{f|f^{-1}((r,\infty])\text{ is at most countable}\}
+ 		\]
+ 		\[
+ 			F_{-}=\{f|f^{-1}([-\infty,r))\text{ is at most countable}\}
+ 		\]
  		
- 	\end{enumerate}
+ 		where $r\in\mathbb{R}$.\\
+ 		Using the method in theorem 1.19(c), every open set can be properly represented. Hence the members of $F_{+}$ and $F_{-}$ meet the requirement.\\
+ 		Finally, consider $f\notin F_{+}$ or $F_{-}$. Since $f\notin F_{+}$, there exists some $r\in\mathbb{R}$ such that $f^{-1}((r,\infty])$ is uncountable. Let $r_f=\sup\{r| f^{-1}((r,\infty])\text{ is uncountable}\}$. If $s>r_f$, then $f^{-1}((s,\infty])$ is at most countable; if$s<r_f$, then $f^{-1}([-\infty,s))=X-f^{-1}((s,\infty])$ is at most countable since $f^{-1}((s,\infty])$ is uncountable and a member of $\bigM$. In this case, we obtain $f^{-1}({r_f})$ is uncountable while $f^{-1}(\mathbb{R}-{r_f})$ is at most countable. So all functions have been covered, the integral can be calculated using this $\mu$:
+ 		\[
+ 			\int_{X}fd\mu=\begin{cases}
+ 			\infty\quad&f\in{F_{-}}\\
+ 			-\infty\quad&f\in{F_{+}}\\
+ 			r_f\quad&\text{others}
+ 			\end{cases}
+ 		\]
+  	\end{enumerate}
  	%EX7
  	\item \exercise Suppose $f_n:X\to[0,\infty]$ is measurable for $n=1,2,3,\cdots,$, $f_1\geq f_2\geq f_3\geq\cdots\geq0$, $f_n(x)\to f(x)$ as $n\to\infty$ for every $x\in X$, and $f_1\in L^1(\mu)$. Prove that then
  	\[
@@ -148,7 +165,7 @@
  	\[
  		\int_Xf_nd\mu=\begin{cases}
  		\mu(E),\text{ $n$ is odd}\\
- 		\mu(X)-\mu(E),\text{ $n$2 d is even}
+ 		\mu(X)-\mu(E),\text{ $n$ is even}
  		\end{cases}
  	\]
  	So for the right hand, we obtain
@@ -277,5 +294,6 @@
  		\]
  	\end{enumerate}
 \end{enumerate}
+\newpage
 No rights reserved. Any part of this work can be reproduced or transmitted in any form or by any means. If you find any error or have better methods, you are welcome to mail to Admiraldesvl@gmail.com or create an issue/pull request at https://github.com/Admiraldesvl/Real-and-Complex-Analysis-Rudin-Solution
 \end{document}
