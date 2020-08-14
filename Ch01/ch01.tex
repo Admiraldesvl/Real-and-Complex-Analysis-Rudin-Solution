@@ -2,6 +2,7 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{a4wide}
+\usepackage{amssymb}
 \begin{document}
 \newcommand{\solution}{\textbf{{\normalsize Solution.}\quad}}
 \newcommand{\exercise}{\textbf{{\normalsize Exercise.}\quad}}
@@ -83,7 +84,7 @@
  		\]
  		which is also measurable. This notation means, the set where $h=0$ or $f=g=\infty$ or $f=g=-\infty$.
  		\item Let $f_n$ and $E$ be the sequence of real functions and set mentioned in (b). If $E$ can be shown as a countable union/intersection of measurable sets, then it's measurable.\\
- 		Since $f_n$ converges, Cauthy criteria can be used here. For every $n\geq 1$, there is an integer $m \geq 1$ such that $|f_i(x)-f_j(x)|<\frac{1}{n}$ holds for all $x\in{E}$ where $i,j\geq m$. Hence $E$ can be rewritten in the following form
+ 		Since $f_n$ converges, Cauchy criteria can be used here. For every $n\geq 1$, there is an integer $m \geq 1$ such that $|f_i(x)-f_j(x)|<\frac{1}{n}$ holds for all $x\in{E}$ where $i,j\geq m$. Hence $E$ can be rewritten in the following form
  		\[
  			E=\bigcap_{n=1}^{\infty}\bigcup_{m=1}^{\infty}\bigcap_{i,j\geq m}\{x||f_i(x)-f_j(x)|<\frac{1}{n}\}=\bigcap_{n=1}^{\infty}\bigcup_{m=1}^{\infty}\bigcap_{i,j\geq m}(f_i-f_j)^{-1}(-\frac{1}{n},\frac{1}{n})
  		\]
@@ -95,7 +96,7 @@
  	\begin{enumerate}
  		\item $\bigM$ a $\sigma$-algebra in $X$.
  		\begin{enumerate}
- 			\item Since $X\in\bigM$ is uncountable, $X^c=\emptyset$ is at most countable, $\emptyset\in\bigM$.
+ 			\item Since $X\in\bigM$ is uncountable, $X^c=\varnothing$ is at most countable, $\varnothing\in\bigM$.
  			\item If $A\in\bigM$, then either $A=(A^c)^c$ or $A^c$ is at most countable; showing $A^c\in\bigM$.
  			\item Suppose $A_i\in\bigM$ for $i\in\mathbb{N}$ and $A=\bigcup A_i$ in this section. The fact that $A\in\bigM$ shall be proved here.
  			\begin{enumerate}
@@ -186,31 +187,7 @@
  	\solution
  	\begin{enumerate}
  		\item $\alpha\geq{1}$:\\
- 			We shall prove that
- 			\[
- 				\log\left(1+\left(\frac{f(x)}{n}\right)^{\alpha}\right)\leq\alpha\frac{f(x)}{n}
- 			\]
- 			holds for all $n$.
- 			It suffices to show that
- 			\[
- 				\log(1+x^{\alpha})\leq\alpha{x}
- 			\]
- 			for all $x>0$ and $\alpha\geq{1}$.\\
- 			Define $g(x)=\log(1+x^{\alpha})-\alpha{x}$, then $g(0)=0$. Computing derivative of $g$, we have
- 			\[
- 				g'(x)=\frac{\alpha{x^{\alpha-1}}}{1+x^{\alpha}}-\alpha=\alpha(\frac{x^{\alpha-1}}{1+x^{\alpha}}-1)
- 			\]
- 			When $x\geq{1}$, we have 
- 			\begin{equation}
- 				\frac{x^{\alpha-1}}{1+x^{\alpha}}\leq\frac{x^{\alpha-1}}{x^{\alpha}}=\frac{1}{x}\leq{1}
- 			\end{equation}
- 			When $0\leq{x}\leq{1}$, we have
- 			\begin{equation}
-	 			(x^{\alpha-1}-1)-x^{\alpha}\leq{0}
- 			\end{equation}
- 			which implies that $\frac{x^{\alpha-1}}{1+x^{\alpha}}\leq1$.\\
- 			So $g'(x)\leq{0}$ when $x\geq0$. Consequently, $g(x)\leq{0}$ holds for all $x$. The inequality at the beginning is proved.\\
- 			Define $h_n(x)=n\log[1+(f/n)^{\alpha}]$, then $h_n(x)\leq \alpha{f(x)}$ holds for all n. Also notice that $\int_{X}\alpha{f}d\mu=c\alpha<\infty$, hence Lebesgue's Dominated Convergence Theorem can be applied here. We therefore should discuss the limit of $h_n(x)$.\\
+ 			Define $h_n(x)=n\log[1+(f/n)^{\alpha}]$, then $h_n(x)\leq \alpha{f(x)}$ holds for all $n$. Also notice that $\int_{X}\alpha{f}d\mu=c\alpha<\infty$, hence Lebesgue's Dominated Convergence Theorem can be applied here. We therefore should discuss the limit of $h_n(x)$.\\
  			$h_n(x)$ can be rewritten as
  			\[
  				h_n(x)=\log[1+(f/n)^{\alpha}]^n\to\frac{f^{\alpha}}{n^{\alpha-1}}
@@ -227,7 +204,7 @@
  	\[
  		\lim_{n\to\infty}\int_{X}f_nd\mu=\int_{X}fd\mu,
  	\]
- 	and show that the hypothesis "$\mu(x)<\infty$" cannot be omitted.\\
+ 	and show that the hypothesis ''$\mu(x)<\infty$" cannot be omitted.\\
  	\solution
  	Since $f_n\to f$ uniformly on $X$, for every $\varepsilon>0$, there exists a positive integer $n_0$ such that
  	\[
@@ -256,18 +233,18 @@
  	\[
  		\sum_{k=1}^{\infty}\mu(E_k)<\infty,
  	\]
- 	then $A$ is the set of all $x$ which lie in infinitely many $E_k$.\\
- 	Let $B=\bigcap_{n=1}^{\infty}\bigcup_{k=n}^{\infty}E_k$. If $x\in{A}$, then $x\in\bigcup_{k=n}^{\infty}E_k$ holds for all $k>0$. That is, $x\in{B}$. Conversely, if $x\notin{A}$, then this $x$ is contained by finitely many sets $\{E_{i_1},E_{i_2},\cdots,E_{i_r}\}$($i_1<i_2<\cdots<i_r$) such that $x\notin\bigcup_{k>i_r}E_{k}$. In this case, $x\in\bigcup_{k=n}^{\infty}E_k$ does not hold for $k=i_r+1$, which implies that $x\notin{B}$. Hence $A=B$.\\
- 	The second part is an application of Theorem 1.19.  Since $\sum\mu(E_k)<\infty$, $\mu(E_k)\to 0$(Cauthy criteria). Since $\{E_k\}$ are not necessarily pairwise disjoint, $\mu(\bigcup_{k=n}^{\infty}E_k)\leq\sum_{k=n}^{\infty}E_k$. Let $A_n=\bigcup_{k=n}^{\infty}E_k$, then $\mu(A_n)\to{0}$. Since $A=\bigcap_{n=1}^{\infty}A_n$, according to theorem 1.19(e), $\mu(A_n)\to\mu(A)$. Hence, $\mu(A)=0$.
+ 	and $B$ is the set of all $x$ which lie in infinitely many $E_k$.\\
+ 	If $x\in{B}$, then $x\in\bigcup_{k=n}^{\infty}E_k$ holds for all $k>0$. That is, $x\in{A}$. Conversely, if $x\notin{B}$, then this $x$ is contained by finitely many sets $\{E_{i_1},E_{i_2},\cdots,E_{i_r}\}$($i_1<i_2<\cdots<i_r$) such that $x\notin\bigcup_{k>i_r}E_{k}$. In this case, $x\in\bigcup_{k=n}^{\infty}E_k$ does not hold for $k=i_r+1$, which implies that $x\notin{A}$. Hence $A=B$.\\
+ 	The second part is an application of Theorem 1.19.  Since $\sum\mu(E_k)<\infty$, $\mu(E_k) \geq 0$ for all $k$, we get $\mu(E_k) \to 0$ as $k \to \infty$. Further we have $\mu(\bigcup_{k=n}^{\infty} \leq \sum_{k=n}^{\infty}\mu(E_k)$. Put $A_n = \bigcup_{k=n}^{\infty}E_k$, then $\mu(A_n) \to 0$ since $\sum_{k=n}^{\infty}E_k \to 0$ when $n \to \infty$. Since $A = \bigcap_{n=1}^{\infty}A_n$, by theorem 1.19(e), $\mu(A_n) \to \mu(A)$. Therefore $\mu(A)=0$.
  	%EX12
  	\item \exercise Suppose $f\in L_1(\mu)$. Prove that to each $\varepsilon>0$ there exists a $\delta>0$ such that $\int_E|f|d\mu<\varepsilon$ whenever $\mu(E)<\delta$.\\
- 	\solution Let $(X,\bigM,\mu)$ be the measure space. Suppose the statement is false, therefore there exists a $\varepsilon>0$ such that for each $\delta>0$, there exists a $E_\delta<\bigM$ such that $\mu(E_\delta)<\delta$ while $\int_{E_\delta}|f|d\mu>\varepsilon$. Let $\delta_n=\frac{1}{2^n}$, there exists a sequence of measurable sets $\{E_{\delta_n}\}$ satisfying the inequalities mentioned above.\\
+ 	\solution Let $(X,\bigM,\mu)$ be the measure space. Suppose the statement is false, and therefore there exists a $\varepsilon>0$ such that for each $\delta>0$, there exists a $E_\delta<\bigM$ such that $\mu(E_\delta)<\delta$ while $\int_{E_\delta}|f|d\mu>\varepsilon$. Let $\delta_n=\frac{1}{2^n}$, there exists a sequence of measurable sets $\{E_{\delta_n}\}$ satisfying the inequalities mentioned above.\\
  	Define $A_k=\bigcup_{n=k}^{\infty}E_{\delta_n}$ and $A=\bigcap_{k=1}^{\infty}A_k$, then $A_1\supset A_2\supset A_3\supset\cdots$, and $\mu(A_1)=\mu(\bigcap_{n=1}^{\infty}E_{\delta_n})\leq\sum\mu(E_{\delta_n})<\sum\frac{1}{2^n}=1<\infty$, therefore according to theorem 1.19(e), $\mu(A_k)\to\mu(A)$.\\
  	Define $\varphi:\bigM\to[0,\infty]$ such that $\varphi(E)=\int_{E}|f|d\mu$. By theorem 1.29, $\varphi$ is a measure. Since $f(x)\in{L^1(\mu)}$, $\varphi(A_k)<\infty$ for every $k$. By theorem 1.19(e), we get $\varphi(A_k)\to\varphi(A)$. According to exercise 11, $\mu(A)=0$. Therefore $\varphi(A)=0$. On the other hand,
  	\[
  		\varphi(A_k)=\varphi(\bigcup_{n=k}^{\infty}E_{\delta_n})\geq\varphi(E_{\delta_k})>\varepsilon.
  	\]
- 	Therefore a contradiction is obtained. Hence the result.
+	Which is a contradiction.
  	%EX13
  	\item \exercise Show that proposition 1.24(c) is also true when $c=\infty$.\\
  	\solution We have to show
